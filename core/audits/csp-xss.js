@@ -139,8 +139,11 @@ class CspXss extends Audit {
       ...warnings.map(f => this.findingToTableItem(f, str_(i18n.UIStrings.itemSeverityMedium))),
     ];
 
-    // Add extra warning for a CSP defined in a meta tag.
-    if (cspMetaTags.length) {
+    const headerOnlyBypasses = evaluateRawCspsForXss(cspHeaders).bypasses;
+    const headerOnlyIsInsecure = headerOnlyBypasses.length > 0 || cspHeaders.length === 0;
+
+    // Warn if there is a meta tag CSP and the header CSPs are not strict enough on their own.
+    if (cspMetaTags.length > 0 && headerOnlyIsInsecure) {
       results.push({
         severity: str_(i18n.UIStrings.itemSeverityMedium),
         description: str_(UIStrings.metaTagMessage),
