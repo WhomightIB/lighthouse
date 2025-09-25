@@ -58,6 +58,9 @@ jobs:
     - run: yarn lint
     - run: yarn test-lantern
     - run: yarn test-legacy-javascript
+      env:
+        # https://github.com/nodejs/node/issues/51555#issuecomment-1974877052
+        DISABLE_V8_COMPILE_CACHE: 1
     - run: yarn i18n:checks
     - run: yarn dogfood-lhci
     - run: yarn generate-insight-audits
