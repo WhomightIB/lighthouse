@@ -111,7 +111,7 @@ describe('ReportUIFeatures', () => {
         const container = render(lhr, {onViewTrace});
 
         const buttons = dom.findAll('.lh-button', container);
-        expect(buttons).toHaveLength(4);
+        expect(buttons).toHaveLength(3);
 
         const viewUnthrottledTraceButton =
           dom.find('a[data-action="view-unthrottled-trace"]', container);
@@ -131,7 +131,7 @@ describe('ReportUIFeatures', () => {
         const container = render(lhr, {onViewTrace});
 
         const buttons = dom.findAll('.lh-button', container);
-        expect(buttons).toHaveLength(3);
+        expect(buttons).toHaveLength(2);
 
         const viewUnthrottledTraceButton =
           dom.find('a[data-action="view-unthrottled-trace"]', container);
@@ -147,7 +147,7 @@ describe('ReportUIFeatures', () => {
         const container = render(lhr);
 
         const buttons = dom.findAll('.lh-button', container);
-        expect(buttons).toHaveLength(3);
+        expect(buttons).toHaveLength(2);
 
         const viewUnthrottledTraceButton =
           dom.find('a[data-action="view-unthrottled-trace"]', container);
@@ -159,7 +159,9 @@ describe('ReportUIFeatures', () => {
       let lhrJson;
 
       before(() => {
-        const lhr = JSON.parse(JSON.stringify(sampleResults));
+        const lh12ResultsOrig = readJson('../../../core/test/fixtures/lhr-12-compat.json', import.meta);
+        const sampleResults = ReportUtils.prepareReportResult(lh12ResultsOrig);
+        const lhr = JSON.parse(JSON.stringify(lh12ResultsOrig));
         lhr.requestedUrl = lhr.finalDisplayedUrl = 'http://www.example.com';
 
         const webpAuditItemTemplate = {
