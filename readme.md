@@ -367,6 +367,8 @@ This section details services that have integrated Lighthouse data. If you're wo
 
 * **[Sonā](https://getsona.io)** - Powered by Lighthouse amongst others, Sonā delivers in-depth insights into your website’s health. Track changes over time, share reports, and receive actionable recommendations to improve performance, accessibility, SEO, best practices, and security. Sonā is free during its beta period.
 
+* **[LightKeeper](https://www.lightkeeper.cloud)** - Lighthouse testing service with free HAR Matrix view and multi-region testing (3 free regions, 25+ paid), supporting authenticated pages and cross-region performance comparison
+
 ## Lighthouse Integrations in non-Web Perf services
 
 * **[PageWatch](https://pagewatch.dev/)** — PageWatch is a tool to find problem pages on your website.  It provides insights into spelling errors, layout issues, slow pages (powered by Lighthouse) and more.  PageWatch is offered via free and paid plans.
