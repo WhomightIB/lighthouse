@@ -31,10 +31,12 @@ const config = {
   audits: [
     'webmcp-registered-tools',
     'webmcp-form-coverage',
+    'webmcp-schema-validity',
     'agentic/llms-txt',
   ],
   artifacts: [
     {id: 'WebMCPTools', gatherer: 'webmcp-tools'},
+    {id: 'WebMcpSchemaIssues', gatherer: 'webmcp-schema'},
     {id: 'LlmsTxt', gatherer: 'agentic/llms-txt'},
   ],
   groups: {
@@ -56,6 +58,7 @@ const config = {
       auditRefs: [
         {id: 'webmcp-form-coverage', weight: 1, group: 'webmcp'},
         {id: 'webmcp-registered-tools', weight: 1, group: 'webmcp'},
+        {id: 'webmcp-schema-validity', weight: 1, group: 'webmcp'},
         {id: 'cumulative-layout-shift', weight: 1, acronym: 'CLS'},
         {id: 'button-name', weight: 1, group: 'agent-accessibility'},
         {id: 'input-button-name', weight: 1, group: 'agent-accessibility'},
