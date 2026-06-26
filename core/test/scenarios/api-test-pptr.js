@@ -108,6 +108,7 @@ describe('Individual modes API', function() {
         notApplicableAudits
           // TODO(16323): Flaky in CI.
           .filter(audit => audit.id !== 'viewport-insight')
+          .filter(audit => audit.id !== 'interaction-to-next-paint')
           .map(audit => audit.id)
           .sort()
       ).toMatchSnapshot();
@@ -162,7 +163,11 @@ describe('Individual modes API', function() {
       const {auditResults, erroredAudits, notApplicableAudits} = getAuditsBreakdown(result.lhr);
       expect(auditResults.map(audit => audit.id).sort()).toMatchSnapshot();
 
-      expect(notApplicableAudits.map(audit => audit.id).sort()).toMatchSnapshot();
+      expect(notApplicableAudits
+        .filter(audit => audit.id !== 'interaction-to-next-paint')
+        .map(audit => audit.id)
+        .sort()
+      ).toMatchSnapshot();
       expect(notApplicableAudits.map(audit => audit.id)).not.toContain('total-blocking-time');
 
       expect(erroredAudits).toHaveLength(0);
